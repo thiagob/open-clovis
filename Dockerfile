@@ -17,10 +17,16 @@ RUN curl -fsSL https://bun.sh/install | BUN_INSTALL=/usr/local bash \
 
 RUN npm install -g @anthropic-ai/claude-code
 
+# Install code-server standalone so it shares the same container as claude
+RUN curl -fsSL https://code-server.dev/install.sh \
+    | sh -s -- --method standalone --prefix /usr/local
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 WORKDIR /home/clovis/workspace
+
+EXPOSE 8080
 
 # tini reaps zombies; Bun spawns subprocesses for the Telegram plugin MCP server
 ENTRYPOINT ["/usr/bin/tini", "--"]
