@@ -48,6 +48,7 @@ prompt_var BOT_NAME                "Bot name (e.g. jarbas)"                     
 prompt_var CLAUDE_CODE_OAUTH_TOKEN "Claude OAuth token (from claude.ai/settings)"        required
 prompt_var TELEGRAM_BOT_TOKEN      "Telegram bot token (from @BotFather, blank to skip)"
 prompt_var GITHUB_TOKEN            "GitHub token (blank to skip)"
+prompt_var PASSWORD                "code-server password for VS Code on :8080 (blank to disable)"
 
 prompt_var WAHA_API_KEY             "Waha API key (blank to disable auth)"
 prompt_var WAHA_SESSION              "Waha session name"

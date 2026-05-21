@@ -20,6 +20,12 @@ if [ -n "${GITHUB_TOKEN:-}" ]; then
   export GH_TOKEN="$GITHUB_TOKEN"
 fi
 
+# Start code-server in background if a password is configured
+if [ -n "${PASSWORD:-}" ]; then
+  code-server --bind-addr 0.0.0.0:8080 --auth password "${HOME}/workspace" &
+  echo "entrypoint: code-server started on :8080"
+fi
+
 # Telegram plugin — install once, skip forever after
 # Sentinel lives inside the channels dir so wiping channels/ triggers a clean reinstall.
 _TELEGRAM_SENTINEL="${HOME}/.claude/channels/telegram/.installed"
